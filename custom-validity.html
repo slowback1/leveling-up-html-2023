@@ -1,0 +1,42 @@
+<form onsubmit="" id="my-form">
+    <input id="my-text-box" type="text" required />
+
+    <input type="submit" id="submit" />
+
+    <p>Is valid: <span id="is-valid">idk lol</span></p>
+</form>
+
+<script>
+    let form = document.getElementById("my-form");
+    let input = document.getElementById("my-text-box");
+
+    input.addEventListener("change", checkIfValid)
+
+    function checkIfValid(event) {
+        let input = event.target;
+        console.log(input);
+
+        validate(input.id);
+        let isValid = input.checkValidity();
+
+        document.getElementById("is-valid").innerHTML = `${isValid}`;
+    }
+
+    form.addEventListener("submit", () => {
+        form.reportValidity();
+    }, false);
+
+    function validate(inputID) {
+        const input = document.getElementById(inputID);
+        const validityState = input.validity;
+
+        if (validityState.valueMissing)
+            input.setCustomValidity("WHAT YOU DOIN TRYIN TO SUBMIT AN INCOMPLETE FORM FOOL");
+        else
+            input.setCustomValidity("");
+
+        input.reportValidity();
+    }
+
+    validate("my-text-box");
+</script>
