@@ -1,3 +1,12 @@
+<style>
+    #my-text-box {
+        border: 1px solid green;
+    }
+    #my-text-box:invalid {
+        border-color: red;
+    }
+</style>
+
 <form onsubmit="" id="my-form">
     <input id="my-text-box" type="text" required />
 
@@ -32,6 +41,8 @@
 
         if (validityState.valueMissing)
             input.setCustomValidity("WHAT YOU DOIN TRYIN TO SUBMIT AN INCOMPLETE FORM FOOL");
+        else if(input.value === "test")
+            input.setCustomValidity("GET THAT GARBAGE OUTTA HERE!!!")
         else
             input.setCustomValidity("");
 
