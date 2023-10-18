@@ -1,0 +1,57 @@
+<dialog id="modal-1">
+    <p>Hello From the Modal</p>
+
+    <form method="dialog">
+        <button formmethod="dialog">Close</button>
+    </form>
+</dialog>
+<dialog id="modal-2">
+    <form method="get">
+        <label for="name">Name</label>
+        <input type="text" id="name" />
+
+        <label for="value">Value</label>
+        <input type="text" id="value" />
+
+        <input type="submit" formmethod="dialog" value="cancel" />
+        <input type="submit" />
+    </form>
+</dialog>
+<dialog id="modal-3">
+    <form method="dialog">
+        <label for="name-2">Name</label>
+        <input type="text" id="name-2" />
+
+        <input type="submit" />
+    </form>
+</dialog>
+
+
+<h2>Basic Modal:</h2>
+<button id="modal-open-1">
+    Open
+</button>
+
+<h2>
+    Modal with a form:
+</h2>
+<button id="modal-open-2">
+    Open
+</button>
+<h2>Modal with a form with "dialog" form method</h2>
+<button id="modal-open-3">
+    Open
+</button>
+
+<script>
+    const numberOfModalsOnPage = document.querySelectorAll("dialog").length;
+
+    for(let i = 0; i < numberOfModalsOnPage; i++) {
+        let openButton = document.getElementById(`modal-open-${i + 1}`)
+        let modal = document.getElementById(`modal-${i + 1}`)
+
+        openButton.addEventListener("click", () => {
+            modal.showModal();
+        })
+    }
+</script>
